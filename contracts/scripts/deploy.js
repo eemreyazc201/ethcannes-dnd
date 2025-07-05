@@ -7,22 +7,19 @@ const fs = require("fs");
         const factory = await hre.ethers.getContractFactory(name);
         const contract = await factory.deploy();
         await contract.deployed();
-
-        const contractsDir = __dirname + "/../../client/contracts";
-        if (!fs.existsSync(contractsDir)) {fs.mkdirSync(contractsDir);}
         
-        fs.writeFileSync(
-            contractsDir + `/${name.toLowerCase()}-address.json`,
-            JSON.stringify({ address: contract.address }, null, 2)
-        );
+        try {
+            data = JSON.parse(fs.readFileSync(__dirname + "/../tests/info.json", "utf8"));
+        } catch (error) {
+            data = {};
+        }
 
-       const artifact = hre.artifacts.readArtifactSync(name);
+        if (!data[name]) {data[name] = {};}
+        data[name].abi = hre.artifacts.readArtifactSync(name).abi;
+        data[name][hre.network.name] = contract.address;
 
-        fs.writeFileSync(
-            contractsDir + `/${name.toLowerCase()}-abi.json`,
-            JSON.stringify({ abi: artifact.abi }, null, 2)
-        );
-    
+        fs.writeFileSync(__dirname + "/../../client/contracts/info.json", JSON.stringify(data, null, 2));
+        fs.writeFileSync(__dirname + "/../tests/info.json", JSON.stringify(data, null, 2));
     }
 
     await hre.run("compile");
