@@ -1,0 +1,50 @@
+{
+  "Character": {
+    "ronin": "0x3fEcC6d74EccC22FF5A29B8751867244449aCcd0",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "inputs": [],
+        "name": "sayHello",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ],
+    "ethereum": "0xAc67ecCFd436D6594C60b86aAe9236B946AA3238"
+  },
+  "Game": {
+    "ronin": "0xdc53856e8D00D5175BE8F7d26ce58e737C28531F",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "inputs": [],
+        "name": "sayHello",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ],
+    "ethereum": "0x7561630045bb1D21B97D9e4EFCDbc272CA391875"
+  }
+}
